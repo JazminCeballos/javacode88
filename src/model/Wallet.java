@@ -3,7 +3,6 @@ package model;
 public class Wallet {
     
     public static final int CAPACIDAD_MAXIMA = 1000000;
-        
     private int saldo;
     private boolean tieneLimite;
 
@@ -35,5 +34,14 @@ public class Wallet {
         return saldo;
     }
 
-    
+    public String breakLimits(){
+        if(!tieneLimite){
+            return "Tu cuenta ya estaba configurada sin limites";
+        }
+        if(saldo >= CAPACIDAD_MAXIMA - 100000){
+            tieneLimite= false;
+            return "Tu cuenta ya no tiene limites¡";
+        }
+        return "Te hacen falta " + ((CAPACIDAD_MAXIMA - 100000) - saldo);
+    }
 }
